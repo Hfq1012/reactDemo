@@ -11,7 +11,7 @@ const NormalLoginForm = () => {
 	
 	}
 	const onFinishFailed = errorInfo => {
-		alert('验证失败！')
+		alert('验证失败！请重新输入！')
 	}
 
 	return (
