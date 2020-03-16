@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import { Form,Icon, Input, Button, Checkbox, message } from 'antd';
+import { Form,Icon, Input, Button, message } from 'antd';
+import { Redirect } from 'react-router-dom';
 import { reqLogin } from '../../api/index';
 import logo from '../../static/images/logo.png';
 import './login.less';
@@ -22,6 +23,8 @@ class Login extends Component {
 			// }
 			if(!err) {
 				if (username === 'admin' && password  === 'admin') {
+					//将user信息保存到local
+					// localStorage.getItem('user_key', JSON.stringify(username))
 					message.success('登录成功')
 					this.props.history.replace('/')
 				}
@@ -31,6 +34,12 @@ class Login extends Component {
 		})
 	}
 	render() { 
+		//读取保存的user。如果存在，直接跳到管理页面
+		// const user = JSON.parse(localStorage.getItem('user_key') || '{}')
+		// if(user._id) {
+		// 	return <Redirect to="/" />
+		// }
+
 		const { getFieldDecorator } = this.props.form;
 		return (
 			<div className="login">
